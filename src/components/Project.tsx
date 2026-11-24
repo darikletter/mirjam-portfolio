@@ -29,8 +29,11 @@ export const SingleProject = ({ project }: { project: Project }) => {
       return;
     }
 
+    // Syncing initial state from the external carousel API
+    /* eslint-disable react-hooks/set-state-in-effect */
     setCount(api.scrollSnapList().length);
     setCurrent(api.selectedScrollSnap() + 1);
+    /* eslint-enable react-hooks/set-state-in-effect */
 
     api.on('select', () => {
       setCurrent(api.selectedScrollSnap() + 1);
